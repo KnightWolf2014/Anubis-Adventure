@@ -20,6 +20,11 @@ public class CynoController : MonoBehaviour {
     private bool isFalling;
     private bool canJump;
 
+    //Dashing variables
+    private bool isDashing;
+    private bool canDash;
+    private float timeDashing;
+
     //Gravity variables
     private float gravity;
     private float gravityOnGround;
@@ -40,6 +45,8 @@ public class CynoController : MonoBehaviour {
         runSpeedX = 10.0f;
 
         configureJump();
+
+        canDash = true;
     }
 
 
@@ -50,6 +57,7 @@ public class CynoController : MonoBehaviour {
         characterController.Move(moveDirection * Time.deltaTime);
 
         handleGravity();
+        handleDash();
         handleJump();
 
     }
@@ -72,10 +80,10 @@ public class CynoController : MonoBehaviour {
     private void handleRunDirection() {
         moveDirection.z = runSpeedZ;
 
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeyCode.LeftArrow)) {
             moveDirection.x = -runSpeedX;
 
-        } else if (Input.GetKey(KeyCode.D)) {
+        } else if (Input.GetKey(KeyCode.RightArrow)) {
             moveDirection.x = runSpeedX;
 
         } else { 
@@ -86,9 +94,23 @@ public class CynoController : MonoBehaviour {
         //TODO GIR:
     }
 
+    private void handleDash() {
+        if (characterController.isGrounded) {
+            bool dashKey = Input.GetKeyDown(KeyCode.DownArrow);
+
+            if (!isDashing && dashKey && canDash) {
+                isDashing = true;
+                canDash = false;
+                cynoAnim.CrossFade("Running Slide", 0.2f);
+                StartCoroutine(canDashRoutine());
+            }
+        }
+    }
+
+
     private void handleJump() {
         if (characterController.isGrounded) {
-            bool jumpKeyUp = Input.GetKeyDown(KeyCode.Space);
+            bool jumpKeyUp = Input.GetKeyDown(KeyCode.UpArrow);
 
             if (!isJumping && jumpKeyUp &&  canJump) {
                 isJumping = true;
@@ -105,7 +127,7 @@ public class CynoController : MonoBehaviour {
 
         if (characterController.isGrounded) {
             moveDirection.y = gravityOnGround;
-            if (isFalling) {
+            if (isFalling && !isDashing) {
                 isFalling = false;
                 canJump = false;
                 StartCoroutine(canJumpRoutine());
@@ -131,10 +153,16 @@ public class CynoController : MonoBehaviour {
     }
 
     IEnumerator canJumpRoutine() {
-        yield return new WaitForSeconds(0.3f);
-
+        yield return new WaitForSeconds(0.05f);
         canJump = true;
     
+    }
+
+    IEnumerator canDashRoutine(){
+        yield return new WaitForSeconds(1.5f);
+        canDash = true;
+        isDashing = false;
+        cynoAnim.CrossFade("Running", 0.5f);
     }
   
 }
