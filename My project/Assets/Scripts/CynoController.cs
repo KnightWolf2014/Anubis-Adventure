@@ -41,7 +41,7 @@ public class CynoController : MonoBehaviour {
         cynoAnim = GetComponent<Animator>();
 
         moveDirection = Vector3.zero;
-        runSpeedZ = 20.0f;
+        runSpeedZ = 40.0f;
         runSpeedX = 10.0f;
 
         configureJump();
@@ -63,7 +63,7 @@ public class CynoController : MonoBehaviour {
     }
 
     private void configureJump() {
-        maxJumpHeight = 5.0f;
+        maxJumpHeight = 3.0f;
         maxJumpTime = 0.75f;
         isJumping = false;
         isFalling = false;

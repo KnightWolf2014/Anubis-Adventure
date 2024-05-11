@@ -10,7 +10,7 @@ public class CamaraController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        offset = new Vector3(0,5,-10);
+        offset = new Vector3(0,7,-20);
         
     }
 
