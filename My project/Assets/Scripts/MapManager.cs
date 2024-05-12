@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -12,6 +14,8 @@ public class MapManager : MonoBehaviour
     public int size;
     public int mapNum;
 
+    private float valuePLayerManager;
+
     private List<GameObject> activeMaps = new List<GameObject>();
 
     public Transform playerTransform;
@@ -19,7 +23,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        valuePLayerManager = 0;
         size = mapPrefabs.Length;
 
         for (int i = 0; i < numberOfMaps; i++)
@@ -41,6 +45,20 @@ public class MapManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        valuePLayerManager += 0.1f;
+
+        Debug.Log("value: "+ Mathf.Approximately(valuePLayerManager, 1.0f));
+
+        if (Mathf.Approximately(valuePLayerManager, 1.0f))
+        {
+
+            PlayerManager.numberOfMeters += 1;
+            PlayerManager.numberOfPoints += 1;
+
+            valuePLayerManager = 0;
+        }
+
         if (playerTransform.position.z > zSpawn - (numberOfMaps*mapLenght))
         {
 
@@ -61,6 +79,7 @@ public class MapManager : MonoBehaviour
             GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, transform.rotation);
             activeMaps.Add(nextGo);
             zSpawn += 2 * mapLenght;
+
         }
         else
         {
@@ -71,6 +90,7 @@ public class MapManager : MonoBehaviour
             GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, transform.rotation);
             activeMaps.Add(nextGo);
             zSpawn += mapLenght;
+
         }
     }
 

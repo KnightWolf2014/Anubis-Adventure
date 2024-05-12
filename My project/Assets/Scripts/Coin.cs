@@ -21,7 +21,7 @@ public class Coin : MonoBehaviour
         if (other.tag == "Player")
         {
             PlayerManager.numberOfCoins += 1;
-            Debug.Log("Coins: " + PlayerManager.numberOfCoins);
+            PlayerManager.numberOfPoints += 10;
             Destroy(gameObject);
         }
     }
