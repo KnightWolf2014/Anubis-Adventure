@@ -26,15 +26,14 @@ public class MapManager : MonoBehaviour
         {
             if (i == 0)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < 2; j++)
                 {
-                    spawnMap(0);
+                    spawnMap(0, 0);
                 }
             }
             else
             {
-                spawnMap(0);
-                spawnMap(Random.Range(1, mapPrefabs.Length));
+                spawnMap(0, Random.Range(1, mapPrefabs.Length));
             }
         }
     }
@@ -44,22 +43,41 @@ public class MapManager : MonoBehaviour
     {
         if (playerTransform.position.z > zSpawn - (numberOfMaps*mapLenght))
         {
-            spawnMap(0);
-            deleteMap();
-            spawnMap(Random.Range(1, mapPrefabs.Length));
+
+            spawnMap(Random.Range(17, mapPrefabs.Length), Random.Range(1, mapPrefabs.Length));
             deleteMap();
         }
     }
 
-    public void spawnMap(int mapIndex)
+    public void spawnMap(int mapIndex, int mapNextIndex)
     {
-        GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
-        activeMaps.Add(go);
-        zSpawn += mapLenght;
+
+        if (mapNextIndex == 3 || mapNextIndex == 4 || mapNextIndex == 11 || mapNextIndex == 12)
+        {
+            GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(go);
+            zSpawn += 2 * mapLenght;
+
+            GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(nextGo);
+            zSpawn += 2 * mapLenght;
+        }
+        else
+        {
+            GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(go);
+            zSpawn += mapLenght;
+
+            GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(nextGo);
+            zSpawn += mapLenght;
+        }
     }
 
     private void deleteMap()
     {
+        Destroy(activeMaps[0]);
+        activeMaps.RemoveAt(0);
         Destroy(activeMaps[0]);
         activeMaps.RemoveAt(0);
     }

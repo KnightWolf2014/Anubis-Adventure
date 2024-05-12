@@ -158,6 +158,17 @@ MonoBehaviour:
   - {fileID: 7974935464575947172, guid: 390cf26f0d9fc324d8a45c3a86142b5d, type: 3}
   - {fileID: 9132036078092401349, guid: 032c41b83e864d044b1a536a9caeb80d, type: 3}
   - {fileID: 4112726824666603915, guid: b1dafe480a92577439c73a0b2fa4859c, type: 3}
+  - {fileID: 1304146484683234917, guid: a394177ce9ab2904e8ff9110dc7a7e94, type: 3}
+  - {fileID: 2327299440790214443, guid: be2e57c848c85ce43ac02121836add52, type: 3}
+  - {fileID: 4859244566278306778, guid: 4f9857ae96d2c584aacdc3681f46fe85, type: 3}
+  - {fileID: 2702947571462668455, guid: 1dc5690c013f9da4e8379fd766184348, type: 3}
+  - {fileID: 8590040100266452635, guid: fbd3787953c7bd84bba2d136c131a073, type: 3}
+  - {fileID: 6613336481747387945, guid: bee578f229975354db3b3f28e6f4768d, type: 3}
+  - {fileID: 3056844776072017992, guid: 776626894bb577b49870a48c59f87c18, type: 3}
+  - {fileID: 8094004862184571567, guid: de511c0d4e3c93e40abc0cde6f9fe64a, type: 3}
+  - {fileID: 2005084276601211030, guid: 3775438527e95a445a670d837eeaeb38, type: 3}
+  - {fileID: 4325945468287536651, guid: eda88c8a2ec0379458083da281d7dfe8, type: 3}
+  - {fileID: 7420278642605266062, guid: 439b5a966fb400646abbe17e79fde20b, type: 3}
   zSpawn: 0
   mapLenght: 25
   numberOfMaps: 10
@@ -426,6 +437,50 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!1 &1435912033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1435912035}
+  - component: {fileID: 1435912034}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1435912034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435912033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8db6ebc4234b35b429290fa19f191827, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1435912035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1435912033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -55.763653, y: -23.18132, z: 58.608612}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2102227735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -490,6 +545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyno
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fdc3464bcd56f064d8d56e805c3a8238, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: fdc3464bcd56f064d8d56e805c3a8238, type: 3}
       propertyPath: m_Controller
       value: 
@@ -513,3 +572,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 2102227735}
   - {fileID: 115597287}
+  - {fileID: 1435912035}
