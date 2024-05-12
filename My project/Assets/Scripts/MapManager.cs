@@ -48,8 +48,6 @@ public class MapManager : MonoBehaviour
 
         valuePLayerManager += 0.1f;
 
-        Debug.Log("value: "+ Mathf.Approximately(valuePLayerManager, 1.0f));
-
         if (Mathf.Approximately(valuePLayerManager, 1.0f))
         {
 

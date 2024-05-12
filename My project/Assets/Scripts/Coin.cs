@@ -20,6 +20,7 @@ public class Coin : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            FindFirstObjectByType<AudioManager>().playSound("Coin");
             PlayerManager.numberOfCoins += 1;
             PlayerManager.numberOfPoints += 10;
             Destroy(gameObject);

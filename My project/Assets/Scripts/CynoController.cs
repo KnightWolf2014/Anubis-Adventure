@@ -44,6 +44,8 @@ public class CynoController : MonoBehaviour {
         runSpeedZ = 40.0f;
         runSpeedX = 10.0f;
 
+        FindFirstObjectByType<AudioManager>().playSound("Running");
+
         configureJump();
 
         canDash = true;
@@ -101,6 +103,8 @@ public class CynoController : MonoBehaviour {
             if (!isDashing && dashKey && canDash) {
                 isDashing = true;
                 canDash = false;
+                FindFirstObjectByType<AudioManager>().stopSound("Running");
+                FindFirstObjectByType<AudioManager>().playSound("Slide");
                 cynoAnim.CrossFade("Running Slide", 0.2f);
                 StartCoroutine(canDashRoutine());
             }
@@ -115,6 +119,9 @@ public class CynoController : MonoBehaviour {
             if (!isJumping && jumpKeyUp &&  canJump) {
                 isJumping = true;
                 moveDirection.y = initJumpVelocity;
+
+                FindFirstObjectByType<AudioManager>().stopSound("Running");
+                FindFirstObjectByType<AudioManager>().playSound("Jump");
                 cynoAnim.CrossFade("Jumping Up",0.2f);
 
             } else if (isJumping && !jumpKeyUp) {
@@ -155,7 +162,10 @@ public class CynoController : MonoBehaviour {
     IEnumerator canJumpRoutine() {
         yield return new WaitForSeconds(0.05f);
         canJump = true;
-    
+
+        FindFirstObjectByType<AudioManager>().stopSound("Jump");
+        FindFirstObjectByType<AudioManager>().playSound("Running");
+
     }
 
     IEnumerator canDashRoutine(){
@@ -163,6 +173,8 @@ public class CynoController : MonoBehaviour {
         canDash = true;
         isDashing = false;
         cynoAnim.CrossFade("Running", 0.5f);
+        FindFirstObjectByType<AudioManager>().stopSound("Slide");
+        FindFirstObjectByType<AudioManager>().playSound("Running");
     }
   
 }
