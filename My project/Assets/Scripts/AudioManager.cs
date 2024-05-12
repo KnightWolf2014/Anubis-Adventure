@@ -17,7 +17,8 @@ public class AudioManager : MonoBehaviour
             sound.source.clip = sound.clip;
             sound.source.loop = sound.loop;
         }
-        
+
+        playSound("MainThemeMenu");
     }
 
     public void playSound(string name)
