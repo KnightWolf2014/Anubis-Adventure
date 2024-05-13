@@ -992,6 +992,18 @@ PrefabInstance:
       propertyPath: sounds.Array.data[5].clip
       value: 
       objectReference: {fileID: 8300000, guid: bcc1b06ed43a2b140bd690a46a8bc3ca, type: 3}
+    - target: {fileID: 4110385715474853397, guid: 8289e97999dabab47ae3e436c0d9a8d3, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110385715474853397, guid: 8289e97999dabab47ae3e436c0d9a8d3, type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110385715474853397, guid: 8289e97999dabab47ae3e436c0d9a8d3, type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6045982361762973474, guid: 8289e97999dabab47ae3e436c0d9a8d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

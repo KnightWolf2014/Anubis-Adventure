@@ -7,28 +7,26 @@ public class MainMenu : MonoBehaviour
 {
     public void startGame()
     {
-        FindFirstObjectByType<AudioManager>().stopSound("MainThemeMenu");
-        FindFirstObjectByType<AudioManager>().playSound("MainThemeGame");
+        AudioManager.song = 1;
         SceneManager.LoadScene("SampleScene");
-
     }
 
     public void loadHowToPlay()
     {
+        AudioManager.song = 0;
         SceneManager.LoadScene("HowToPlay");
-
     }
 
     public void loadMainMenu()
     {
+        AudioManager.song = 0;
         SceneManager.LoadScene("Menu");
-
     }
 
     public void loadCredits()
     {
+        AudioManager.song = 0;
         SceneManager.LoadScene("Credits");
-
     }
 
     public void quitGame()

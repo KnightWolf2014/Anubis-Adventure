@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
 
     public Sound[] sounds;
+
+    public static int song = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +22,31 @@ public class AudioManager : MonoBehaviour
             sound.source.loop = sound.loop;
         }
 
-        playSound("MainThemeMenu");
+        if (song == 0)
+        {
+            if (!songIsPlaying("MainThemeMenu"))
+            {
+                stopSound("MainThemeGame");
+                playSound("MainThemeMenu");
+            }
+        }
+        else
+        {
+            stopSound("MainThemeMenu");
+            playSound("MainThemeGame");
+        }
+    }
+
+    public bool songIsPlaying(string name)
+    {
+        foreach (Sound sound in sounds)
+        {
+            if (sound.name == name)
+            {
+               return sound.source.isPlaying;
+            }
+        }
+        return false;
     }
 
     public void playSound(string name)
