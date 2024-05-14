@@ -28,7 +28,7 @@ public class PlayerManager : MonoBehaviour
     {
 
         metersText.text = numberOfMeters + "m";
-        coinsText.text = "Coins: " + numberOfCoins;
+        coinsText.text = numberOfCoins + "$";
         pointsText.text = "" + numberOfPoints;
     }
 }
