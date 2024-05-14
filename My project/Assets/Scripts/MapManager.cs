@@ -60,7 +60,7 @@ public class MapManager : MonoBehaviour
         if (playerTransform.position.z > zSpawn - (numberOfMaps*mapLenght))
         {
 
-            spawnMap(Random.Range(17, mapPrefabs.Length), Random.Range(1, mapPrefabs.Length));
+            spawnMap(Random.Range(21, mapPrefabs.Length), Random.Range(1, mapPrefabs.Length));
             deleteMap();
         }
     }
@@ -68,7 +68,7 @@ public class MapManager : MonoBehaviour
     public void spawnMap(int mapIndex, int mapNextIndex)
     {
 
-        if (mapNextIndex == 3 || mapNextIndex == 4 || mapNextIndex == 11 || mapNextIndex == 12)
+        if (mapNextIndex == 3 || mapNextIndex == 4 || mapNextIndex == 11 || mapNextIndex == 12 || mapNextIndex == 19)
         {
             GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
             activeMaps.Add(go);
@@ -78,6 +78,26 @@ public class MapManager : MonoBehaviour
             activeMaps.Add(nextGo);
             zSpawn += 2 * mapLenght;
 
+        }
+        else if (mapNextIndex == 7 || mapNextIndex == 18)
+        {
+            GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(go);
+            zSpawn += mapLenght;
+
+            GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, Quaternion.Euler(0f, 180f, 0f));
+            activeMaps.Add(nextGo);
+            zSpawn += mapLenght;
+        }
+        else if (mapNextIndex == 8 || mapNextIndex == 20)
+        {
+            GameObject go = Instantiate(mapPrefabs[mapIndex], transform.forward * zSpawn, transform.rotation);
+            activeMaps.Add(go);
+            zSpawn += 2*mapLenght;
+
+            GameObject nextGo = Instantiate(mapPrefabs[mapNextIndex], transform.forward * zSpawn, Quaternion.Euler(0f, 180f, 0f));
+            activeMaps.Add(nextGo);
+            zSpawn += 2*mapLenght;
         }
         else
         {
