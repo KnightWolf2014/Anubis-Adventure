@@ -67,11 +67,16 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: MainThemeGame
     clip: {fileID: 8300000, guid: 0994b7b0f4c47aa4cae4f580a39fd325, type: 3}
-    volume: 1
+    volume: 0.7
     loop: 1
     source: {fileID: 0}
   - name: MainThemeMenu
     clip: {fileID: 8300000, guid: bcc1b06ed43a2b140bd690a46a8bc3ca, type: 3}
-    volume: 1
+    volume: 0.7
     loop: 1
+    source: {fileID: 0}
+  - name: Page
+    clip: {fileID: 8300000, guid: 609f1baf2dbdac34095d283911d8c3b9, type: 3}
+    volume: 1
+    loop: 0
     source: {fileID: 0}

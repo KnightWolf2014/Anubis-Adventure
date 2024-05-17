@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
 
+    public static bool menu;
+    public GameObject menuPanel;
+
     public static int numberOfCoins;
     public static int numberOfMeters;
     public static int numberOfPoints;
@@ -16,6 +19,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menu = false;
 
         numberOfCoins = 0;
         numberOfMeters = 0;
@@ -26,6 +30,17 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (menu)
+        {
+            Time.timeScale = 0;
+            menuPanel.SetActive(true);
+        }
+        if (!menu)
+        {
+            Time.timeScale = 1;
+            menuPanel.SetActive(false);
+        }
 
         metersText.text = numberOfMeters + "m";
         coinsText.text = numberOfCoins + "$";

@@ -30,6 +30,10 @@ public class CynoController : MonoBehaviour {
     private float gravityOnGround;
     private float gravityFallMultiplier;
 
+    //Menu variables
+    public static bool menuBool;
+    public static bool canMenu;
+
     //Components variables
     private CharacterController characterController;
     private Animator cynoAnim;
@@ -45,6 +49,10 @@ public class CynoController : MonoBehaviour {
         runSpeedX = 10.0f;
 
         FindFirstObjectByType<AudioManager>().playSound("Running");
+
+
+        menuBool = false;
+        canMenu = true;
 
         configureJump();
 
@@ -62,6 +70,32 @@ public class CynoController : MonoBehaviour {
         handleDash();
         handleJump();
 
+        handleMenu();
+
+    }
+
+    private void handleMenu()
+    {
+
+        bool menuKey = Input.GetKeyDown(KeyCode.Escape);
+        if (!menuBool && menuKey && canMenu)
+        {
+            PlayerManager.menu = true;
+            menuBool = true;
+            canMenu = false;
+            FindFirstObjectByType<AudioManager>().playSound("Page");
+            FindFirstObjectByType<AudioManager>().stopSound("Running");
+            StartCoroutine(canMenuRoutine());
+        }
+        else if (menuBool && menuKey && canMenu)
+        {
+            PlayerManager.menu = false;
+            menuBool = false;
+            canMenu = false;
+            FindFirstObjectByType<AudioManager>().playSound("Page");
+            FindFirstObjectByType<AudioManager>().playSound("Running");
+            StartCoroutine(canMenuRoutine());
+        }
     }
 
     private void configureJump() {
@@ -176,5 +210,12 @@ public class CynoController : MonoBehaviour {
         FindFirstObjectByType<AudioManager>().stopSound("Slide");
         FindFirstObjectByType<AudioManager>().playSound("Running");
     }
-  
+
+    IEnumerator canMenuRoutine()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        canMenu = true;
+
+    }
+
 }
