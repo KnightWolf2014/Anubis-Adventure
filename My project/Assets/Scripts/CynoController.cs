@@ -1,15 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 
+
 public class CynoController : MonoBehaviour {
 
+    private struct MoveDirection {
+        public float forward;
+        public float lateral;
+        public float up;
+    }
+
+
     //Move variables
-    private Vector3 moveDirection;
-    private float runSpeedZ;
-    private float runSpeedX;
+    private MoveDirection moveDirection;
+    private float runSpeedForward;
+    private float runSpeedLateral;
 
 
     //Jumping variables
@@ -33,7 +42,7 @@ public class CynoController : MonoBehaviour {
     //Menu variables
     public static bool menuBool;
     public static bool canMenu;
-
+    
     //Components variables
     private CharacterController characterController;
     private Animator cynoAnim;
@@ -44,9 +53,12 @@ public class CynoController : MonoBehaviour {
         characterController = GetComponent<CharacterController>();
         cynoAnim = GetComponent<Animator>();
 
-        moveDirection = Vector3.zero;
-        runSpeedZ = 40.0f;
-        runSpeedX = 10.0f;
+        moveDirection.forward = 0.0f;
+        moveDirection.lateral = 0.0f;
+        moveDirection.up = 0.0f;
+
+        runSpeedForward = 40.0f;
+        runSpeedLateral = 20.0f;
 
         FindFirstObjectByType<AudioManager>().playSound("Running");
 
@@ -64,7 +76,8 @@ public class CynoController : MonoBehaviour {
     void Update() {
 
         handleRunDirection();
-        characterController.Move(moveDirection * Time.deltaTime);
+
+        calculateMovementRotation();
 
         handleGravity();
         handleDash();
@@ -72,6 +85,35 @@ public class CynoController : MonoBehaviour {
 
         handleMenu();
 
+    }
+
+    private void calculateMovementRotation() {
+
+        int rot = (int) this.transform.eulerAngles.y;
+        Vector3 moveXYZ = new Vector3(0, moveDirection.up, 0);
+
+        if (rot == 90) {
+            moveXYZ.x = moveDirection.forward;
+            moveXYZ.z = -moveDirection.lateral;
+
+
+        } else if (rot == 180) {
+            moveXYZ.z = -moveDirection.forward;
+            moveXYZ.x = -moveDirection.lateral;
+
+
+        } else if (rot == 270) {
+            moveXYZ.x = -moveDirection.forward;
+            moveXYZ.z = moveDirection.lateral;
+
+
+        } else {
+            moveXYZ.z = moveDirection.forward;
+            moveXYZ.x = moveDirection.lateral;
+        
+        }
+
+        characterController.Move(moveXYZ * Time.deltaTime);
     }
 
     private void handleMenu()
@@ -114,20 +156,25 @@ public class CynoController : MonoBehaviour {
     }
 
     private void handleRunDirection() {
-        moveDirection.z = runSpeedZ;
+        moveDirection.forward = runSpeedForward;
 
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            moveDirection.x = -runSpeedX;
+            moveDirection.lateral = -runSpeedLateral;
 
         } else if (Input.GetKey(KeyCode.RightArrow)) {
-            moveDirection.x = runSpeedX;
+            moveDirection.lateral = runSpeedLateral;
 
-        } else { 
-            moveDirection.x = 0;
-        
+        } else {
+            moveDirection.lateral = 0;
         }
+ 
+        
+        if (Input.GetKeyDown(KeyCode.A)) {
+            this.transform.eulerAngles -= new Vector3(0,90.0f,0);
 
-        //TODO GIR:
+        } else if (Input.GetKeyDown(KeyCode.S)) {
+            this.transform.eulerAngles += new Vector3(0, +90.0f, 0);
+        }
     }
 
     private void handleDash() {
@@ -152,7 +199,7 @@ public class CynoController : MonoBehaviour {
 
             if (!isJumping && jumpKeyUp &&  canJump) {
                 isJumping = true;
-                moveDirection.y = initJumpVelocity;
+                moveDirection.up = initJumpVelocity;
 
                 FindFirstObjectByType<AudioManager>().stopSound("Running");
                 FindFirstObjectByType<AudioManager>().playSound("Jump");
@@ -167,7 +214,7 @@ public class CynoController : MonoBehaviour {
     private void handleGravity() {
 
         if (characterController.isGrounded) {
-            moveDirection.y = gravityOnGround;
+            moveDirection.up = gravityOnGround;
             if (isFalling && !isDashing) {
                 isFalling = false;
                 canJump = false;
@@ -176,7 +223,7 @@ public class CynoController : MonoBehaviour {
             }
 
         } else {
-            float prevYVel = moveDirection.y;
+            float prevYVel = moveDirection.up;
 
             if (!isFalling && prevYVel <= 0.0f) {
                 isFalling = true;
@@ -185,11 +232,11 @@ public class CynoController : MonoBehaviour {
      
             float nextYVel;
             if (isFalling) {
-                nextYVel = moveDirection.y + gravity * gravityFallMultiplier * Time.deltaTime;
+                nextYVel = moveDirection.up + gravity * gravityFallMultiplier * Time.deltaTime;
 
-            } else nextYVel = moveDirection.y + gravity * Time.deltaTime;
+            } else nextYVel = moveDirection.up + gravity * Time.deltaTime;
 
-            moveDirection.y = (prevYVel+nextYVel)/2.0f;
+            moveDirection.up = (prevYVel+nextYVel)/2.0f;
         }
     }
 
