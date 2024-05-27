@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class CamaraController : MonoBehaviour {   
 
+
     [SerializeField] private Transform cynoTransform;
     
     private float offset_back_distance;
     private float offset_up_distance;
     private Vector3 offset;
 
-    private float yVelocity;
     private float smooth;
 
     // Start is called before the first frame update
@@ -22,7 +22,6 @@ public class CamaraController : MonoBehaviour {
         offset = new Vector3(0, offset_up_distance, 0);
 
         smooth = 0.05f;
-        yVelocity = 0.0f;
     }
 
     // Update is called once per frame

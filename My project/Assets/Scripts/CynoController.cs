@@ -47,43 +47,62 @@ public class CynoController : MonoBehaviour {
     private CharacterController characterController;
     private Animator cynoAnim;
 
+    //Variables para definir collider de character controller
+    Vector3 centerCollider;
+    Vector3 centerColliderDash;
+    float height;
+    float heightDashing;
+
+    bool isAlive;
+
+
     // Start is called before the first frame update
     void Start() {
 
         characterController = GetComponent<CharacterController>();
         cynoAnim = GetComponent<Animator>();
 
+        centerCollider = characterController.center;
+        centerColliderDash = new Vector3(characterController.center.x, characterController.center.y / 2.0f, characterController.center.z);
+
+        height = characterController.height;
+        heightDashing = characterController.height / 2.0f;
+
         moveDirection.forward = 0.0f;
         moveDirection.lateral = 0.0f;
         moveDirection.up = 0.0f;
 
-        runSpeedForward = 40.0f;
-        runSpeedLateral = 20.0f;
+        runSpeedForward = 30.0f;
+        runSpeedLateral = 15.0f;
 
-        FindFirstObjectByType<AudioManager>().playSound("Running");
+        FindFirstObjectByType<AudioManager>().playSound("running");
 
-
+        
         menuBool = false;
         canMenu = true;
 
         configureJump();
 
         canDash = true;
+        isAlive = true;
     }
 
 
     // Update is called once per frame
     void Update() {
 
-        handleRunDirection();
+        if (isAlive) {
 
-        calculateMovementRotation();
+            handleRunDirection();
 
-        handleGravity();
-        handleDash();
-        handleJump();
+            calculateMovementRotation();
 
-        handleMenu();
+            handleGravity();
+            handleDash();
+            handleJump();
+
+            handleMenu();
+        }
 
     }
 
@@ -159,10 +178,16 @@ public class CynoController : MonoBehaviour {
         moveDirection.forward = runSpeedForward;
 
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            moveDirection.lateral = -runSpeedLateral;
+            if (!isJumping && !isDashing) 
+                moveDirection.lateral = -runSpeedLateral;
+            else 
+                moveDirection.lateral = -runSpeedLateral*0.85f;
 
         } else if (Input.GetKey(KeyCode.RightArrow)) {
-            moveDirection.lateral = runSpeedLateral;
+            if (!isJumping && !isDashing)
+                moveDirection.lateral = runSpeedLateral;
+            else
+                moveDirection.lateral = runSpeedLateral * 0.85f;
 
         } else {
             moveDirection.lateral = 0;
@@ -182,8 +207,13 @@ public class CynoController : MonoBehaviour {
             bool dashKey = Input.GetKeyDown(KeyCode.DownArrow);
 
             if (!isDashing && dashKey && canDash) {
+
                 isDashing = true;
                 canDash = false;
+
+                characterController.height = heightDashing;
+                characterController.center = centerColliderDash; 
+
                 FindFirstObjectByType<AudioManager>().stopSound("Running");
                 FindFirstObjectByType<AudioManager>().playSound("Slide");
                 cynoAnim.CrossFade("Running Slide", 0.2f);
@@ -198,6 +228,14 @@ public class CynoController : MonoBehaviour {
             bool jumpKeyUp = Input.GetKeyDown(KeyCode.UpArrow);
 
             if (!isJumping && jumpKeyUp &&  canJump) {
+
+                if (isDashing) {
+                    isDashing = false;
+                    characterController.height = height;
+                    characterController.center = centerCollider;
+                    FindFirstObjectByType<AudioManager>().stopSound("Slide");
+                }
+
                 isJumping = true;
                 moveDirection.up = initJumpVelocity;
 
@@ -219,7 +257,7 @@ public class CynoController : MonoBehaviour {
                 isFalling = false;
                 canJump = false;
                 StartCoroutine(canJumpRoutine());
-                cynoAnim.CrossFade("Running", 0.5f);
+                cynoAnim.CrossFade("Running", 0.4f);
             }
 
         } else {
@@ -227,7 +265,7 @@ public class CynoController : MonoBehaviour {
 
             if (!isFalling && prevYVel <= 0.0f) {
                 isFalling = true;
-                cynoAnim.CrossFade("Jumping Down", 0.2f);
+                cynoAnim.CrossFade("Jumping Down", 0.1f);
             }
      
             float nextYVel;
@@ -250,9 +288,12 @@ public class CynoController : MonoBehaviour {
     }
 
     IEnumerator canDashRoutine(){
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.25f);
         canDash = true;
         isDashing = false;
+        characterController.height = height;
+        characterController.center = centerCollider;
+
         cynoAnim.CrossFade("Running", 0.5f);
         FindFirstObjectByType<AudioManager>().stopSound("Slide");
         FindFirstObjectByType<AudioManager>().playSound("Running");
@@ -263,6 +304,25 @@ public class CynoController : MonoBehaviour {
         yield return new WaitForSecondsRealtime(0.1f);
         canMenu = true;
 
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.tag == "full_vida") {
+
+            other.enabled = false;
+            isAlive = false;
+
+            cynoAnim.CrossFade("Knock", 0.1f);
+            FindFirstObjectByType<AudioManager>().stopSound("Running");
+            FindFirstObjectByType<AudioManager>().playSound("hit");
+
+            PlayerManager.gameOver = true;
+
+        } else if (other.tag == "media_vida") {
+            other.enabled = false;
+            Debug.Log("Half");
+
+        }
     }
 
 }

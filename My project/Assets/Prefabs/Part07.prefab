@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2005997111883236536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4581923175391608633}
+  - component: {fileID: 4034658910684367332}
+  m_Layer: 0
+  m_Name: ko
+  m_TagString: full_vida
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4581923175391608633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005997111883236536}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.444389, y: 2.3450675, z: -1.1419296}
+  m_LocalScale: {x: 1, y: 1, z: 0.33333334}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7386689040431704666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4034658910684367332
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005997111883236536}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 114.98628, y: 2.5934696, z: 116.27488}
+  m_Center: {x: -2.0715103, y: -9.295247, z: 5.526211}
 --- !u!1001 &82101262888467674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,44 +708,56 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 8273302588981351177}
+      addedObject: {fileID: 4581923175391608633}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 4843907655614413332}
+      addedObject: {fileID: 8273302588981351177}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 8500455555760503285}
+      addedObject: {fileID: 4843907655614413332}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 5053899843156096143}
+      addedObject: {fileID: 8500455555760503285}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 1008345992782970365}
+      addedObject: {fileID: 5053899843156096143}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 5
-      addedObject: {fileID: 4778089353178058604}
+      addedObject: {fileID: 1008345992782970365}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 6
-      addedObject: {fileID: 1854580418685524045}
+      addedObject: {fileID: 4778089353178058604}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 7
-      addedObject: {fileID: 1722399238319936691}
+      addedObject: {fileID: 1854580418685524045}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 8
-      addedObject: {fileID: 5367207992057546596}
+      addedObject: {fileID: 1722399238319936691}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 9
-      addedObject: {fileID: 265899262000708036}
+      addedObject: {fileID: 5367207992057546596}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 10
-      addedObject: {fileID: 7985392123015352070}
+      addedObject: {fileID: 265899262000708036}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: 11
+      addedObject: {fileID: 7985392123015352070}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
+      insertIndex: 12
       addedObject: {fileID: 3220091352428197158}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4495682639436631784}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3134625730141164364}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8979878705610918874}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 375135710009775027}
     - targetCorrespondingSourceObject: {fileID: 8164078558771037576, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6608380941164212712}
@@ -769,13 +834,81 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 18, y: 2.1, z: 2}
-  m_Center: {x: 0, y: 1.066275, z: -11.8}
+  m_Size: {x: 18, y: 2.1, z: 2.4808025}
+  m_Center: {x: 0, y: 1.0662749, z: -11.655761}
 --- !u!4 &7386689040431704666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
   m_PrefabInstance: {fileID: 6991965925105634737}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7910882976794390752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7d8f2eeb40dbb6d4c9e5f9a44a24ef7f, type: 3}
+  m_PrefabInstance: {fileID: 6991965925105634737}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3134625730141164364
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910882976794390752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.2241592, y: 20.302794, z: 25.663122}
+  m_Center: {x: 7.449498, y: 10.088019, z: -0.008791606}
+--- !u!65 &8979878705610918874
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910882976794390752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.358653, y: 20.302794, z: 2.0558066}
+  m_Center: {x: -7.427319, y: 10.088019, z: 11.794902}
+--- !u!65 &375135710009775027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7910882976794390752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.358653, y: 20.302794, z: 2.440454}
+  m_Center: {x: -7.427319, y: 10.088019, z: -11.620125}
 --- !u!1001 &8447721662432638294
 PrefabInstance:
   m_ObjectHideFlags: 0
