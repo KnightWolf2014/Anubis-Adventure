@@ -170,14 +170,13 @@ MonoBehaviour:
   - {fileID: 9132036078092401349, guid: 032c41b83e864d044b1a536a9caeb80d, type: 3}
   - {fileID: 7910882976794390752, guid: 057aff7187d29ba4ebc362f6cf757f29, type: 3}
   - {fileID: 4112726824666603915, guid: b1dafe480a92577439c73a0b2fa4859c, type: 3}
-  - {fileID: 8158475134630470917, guid: 5d42f4a2973ec924fb052090c9deef56, type: 3}
-  - {fileID: 8158475134630470917, guid: 5d42f4a2973ec924fb052090c9deef56, type: 3}
+  - {fileID: 8316916060824644856, guid: 7aaf5de9a01ea90469712af385ae274d, type: 3}
+  - {fileID: 8316916060824644856, guid: 7aaf5de9a01ea90469712af385ae274d, type: 3}
+  - {fileID: 8316916060824644856, guid: 7aaf5de9a01ea90469712af385ae274d, type: 3}
+  - {fileID: 8316916060824644856, guid: 7aaf5de9a01ea90469712af385ae274d, type: 3}
   - {fileID: 2005084276601211030, guid: 3775438527e95a445a670d837eeaeb38, type: 3}
   - {fileID: 4325945468287536651, guid: eda88c8a2ec0379458083da281d7dfe8, type: 3}
   - {fileID: 7420278642605266062, guid: 439b5a966fb400646abbe17e79fde20b, type: 3}
-  zSpawn: 0
-  mapLenght: 25
-  numberOfMaps: 10
   size: 0
   mapNum: 0
   playerTransform: {fileID: 1076609736}
@@ -3105,6 +3104,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 969987655762108251, guid: c4a2ea7c16a4c6444ae08ab884d86c45, type: 3}
+      propertyPath: mapManager
+      value: 
+      objectReference: {fileID: 115597286}
     - target: {fileID: 7118595351054882275, guid: c4a2ea7c16a4c6444ae08ab884d86c45, type: 3}
       propertyPath: m_Name
       value: Cyno

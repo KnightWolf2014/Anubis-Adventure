@@ -6,6 +6,7 @@ TagManager:
   tags:
   - media_vida
   - full_vida
+  - changeDirection
   layers:
   - Default
   - TransparentFX

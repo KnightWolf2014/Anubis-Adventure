@@ -20,7 +20,6 @@ public class CynoController : MonoBehaviour {
     private float runSpeedForward;
     private float runSpeedLateral;
 
-
     //Jumping variables
     private float initJumpVelocity;
     private float maxJumpHeight;
@@ -55,6 +54,11 @@ public class CynoController : MonoBehaviour {
 
     bool isAlive;
 
+    //Variables para cambiar de direccion
+    [SerializeField] private MapManager mapManager;
+    bool canChangeDirection;
+    bool firstChangeDir;
+    GameObject changeDirectionGO;
 
     // Start is called before the first frame update
     void Start() {
@@ -85,6 +89,11 @@ public class CynoController : MonoBehaviour {
 
         canDash = true;
         isAlive = true;
+
+        canChangeDirection = false;
+        firstChangeDir = true;
+
+        changeDirectionGO = null;
     }
 
 
@@ -178,10 +187,10 @@ public class CynoController : MonoBehaviour {
         moveDirection.forward = runSpeedForward;
 
         if (Input.GetKey(KeyCode.LeftArrow)) {
-            if (!isJumping && !isDashing) 
+            if (!isJumping && !isDashing)
                 moveDirection.lateral = -runSpeedLateral;
-            else 
-                moveDirection.lateral = -runSpeedLateral*0.85f;
+            else
+                moveDirection.lateral = -runSpeedLateral * 0.85f;
 
         } else if (Input.GetKey(KeyCode.RightArrow)) {
             if (!isJumping && !isDashing)
@@ -192,13 +201,18 @@ public class CynoController : MonoBehaviour {
         } else {
             moveDirection.lateral = 0;
         }
- 
-        
-        if (Input.GetKeyDown(KeyCode.A)) {
-            this.transform.eulerAngles -= new Vector3(0,90.0f,0);
 
-        } else if (Input.GetKeyDown(KeyCode.S)) {
+        if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.A)) {
+            this.transform.eulerAngles -= new Vector3(0, 90.0f, 0);
+            firstChangeDir = false;
+            Vector3 spawn = changeDirectionGO.transform.Find("leftSpawn").transform.position;
+            mapManager.changeDirection(spawn);
+
+        } else if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.S)) {
             this.transform.eulerAngles += new Vector3(0, +90.0f, 0);
+            firstChangeDir = false;
+            Vector3 spawn = changeDirectionGO.transform.Find("rightSpawn").transform.position;
+            mapManager.changeDirection(spawn);
         }
     }
 
@@ -322,6 +336,22 @@ public class CynoController : MonoBehaviour {
             other.enabled = false;
             Debug.Log("Half");
 
+        } 
+    }
+
+    private void OnTriggerStay(Collider other) {
+
+        if (!canChangeDirection && other.tag == "changeDirection") {
+            canChangeDirection = true;
+            changeDirectionGO = other.gameObject;
+            Debug.Log(changeDirectionGO.name);
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "changeDirection") {
+            canChangeDirection = false;
+            firstChangeDir = true;
         }
     }
 

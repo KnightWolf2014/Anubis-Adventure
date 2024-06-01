@@ -16,8 +16,8 @@ public class CamaraController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        offset_back_distance = 15.0f;
-        offset_up_distance = 7.0f;
+        offset_back_distance = 12.0f;
+        offset_up_distance = 5.0f;
 
         offset = new Vector3(0, offset_up_distance, 0);
 
