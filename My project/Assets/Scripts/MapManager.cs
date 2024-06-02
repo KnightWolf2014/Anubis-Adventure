@@ -55,7 +55,7 @@ public class MapManager : MonoBehaviour
             valuePLayerManager = 0;
         }
 
-        if (Vector3.Distance(playerTransform.position, startPosMap + playerTransform.forward * zSpawn) < 70.0f && !stopSpawn) {
+        if (Vector3.Distance(playerTransform.position, startPosMap + playerTransform.forward * zSpawn) < 200.0f && !stopSpawn) {
             spawnMap(Random.Range(25, mapPrefabs.Length), Random.Range(1, mapPrefabs.Length));
             deleteMap();
 

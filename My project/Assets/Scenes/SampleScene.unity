@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 4325945468287536651, guid: eda88c8a2ec0379458083da281d7dfe8, type: 3}
   - {fileID: 7420278642605266062, guid: 439b5a966fb400646abbe17e79fde20b, type: 3}
   playerTransform: {fileID: 1076609736}
+  pyramid: {fileID: 1230680641}
 --- !u!4 &115597287
 Transform:
   m_ObjectHideFlags: 0
@@ -882,6 +883,7 @@ RectTransform:
   - {fileID: 597905078}
   - {fileID: 1647997768}
   - {fileID: 1313019516}
+  - {fileID: 848138416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1302,6 +1304,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839126922}
+  m_CullTransparentMesh: 1
+--- !u!1 &848138415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 848138416}
+  - component: {fileID: 848138418}
+  - component: {fileID: 848138417}
+  m_Layer: 5
+  m_Name: GodModeText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &848138416
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848138415}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 653593968}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 539, y: 155}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &848138417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848138415}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 3
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: God Mode
+--- !u!222 &848138418
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848138415}
   m_CullTransparentMesh: 1
 --- !u!1 &897788860
 GameObject:
@@ -1862,6 +1943,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204289837}
   m_CullTransparentMesh: 1
+--- !u!1 &1230680641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4730488496723207730, guid: de062c213457f184b843bcb8640fa499, type: 3}
+  m_PrefabInstance: {fileID: 2790924884078749144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1286744036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2335,7 @@ MonoBehaviour:
   coinsTextGO: {fileID: 578531780}
   metersTextGO: {fileID: 1808841207}
   pointsTextGO: {fileID: 1204289840}
+  godModeText: {fileID: 848138417}
 --- !u!4 &1435912035
 Transform:
   m_ObjectHideFlags: 0

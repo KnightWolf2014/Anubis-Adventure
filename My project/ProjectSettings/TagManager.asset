@@ -8,6 +8,8 @@ TagManager:
   - full_vida
   - changeDirection
   - rest_life
+  - jump
+  - dash
   layers:
   - Default
   - TransparentFX

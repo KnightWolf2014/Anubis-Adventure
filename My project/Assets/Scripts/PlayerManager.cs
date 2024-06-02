@@ -22,7 +22,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Text metersTextGO;
     [SerializeField] private Text pointsTextGO;
 
+    [SerializeField] private Text godModeText;
+
     public static bool gameOver;
+    public static bool godmode; 
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +65,14 @@ public class PlayerManager : MonoBehaviour
             pointsTextGO.text = numberOfPoints + " pts";
 
         }
+
+        if (Input.GetKeyDown(KeyCode.G)) godmode = !godmode;
+
+        if (godmode) godModeText.enabled = true;
+        else godModeText.enabled = false;   
+
+        //TODO IF GODMODE MOSTRAR TEXT PER PANTALLA
+
     }
     IEnumerator GameOver() {
         yield return new WaitForSecondsRealtime(1.1f);
