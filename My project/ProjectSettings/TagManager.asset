@@ -10,6 +10,7 @@ TagManager:
   - rest_life
   - jump
   - dash
+  - move
   layers:
   - Default
   - TransparentFX

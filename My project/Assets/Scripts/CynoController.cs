@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 
 
@@ -81,7 +82,7 @@ public class CynoController : MonoBehaviour {
         moveDirection.lateral = 0.0f;
         moveDirection.up = 0.0f;
 
-        runSpeedForward = 30.0f;
+        runSpeedForward = 40.0f;
         runSpeedLateral = 15.0f;
 
         FindFirstObjectByType<AudioManager>().playSound("running");
@@ -112,6 +113,7 @@ public class CynoController : MonoBehaviour {
         if (isAlive) {
 
             if (!PlayerManager.godmode) handleRunDirection();
+            else moveDirection.lateral = 0;
 
             calculateMovementRotation();
 
@@ -314,7 +316,7 @@ public class CynoController : MonoBehaviour {
     }
 
     IEnumerator canDashRoutine(){
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(1.0f);
         canDash = true;
         isDashing = false;
         characterController.height = height;
@@ -341,11 +343,22 @@ public class CynoController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
 
-        if (!PlayerManager.godmode) {
 
-            if (other.tag == "full_vida") {
+        if (other.tag == "full_vida") {
 
-                other.enabled = false;
+            other.enabled = false;
+            isAlive = false;
+
+            cynoAnim.CrossFade("Knock", 0.1f);
+            FindFirstObjectByType<AudioManager>().stopSound("Running");
+            FindFirstObjectByType<AudioManager>().playSound("hit");
+
+            PlayerManager.gameOver = true;
+
+        } else if (other.tag == "media_vida") {
+            other.enabled = false;
+
+            if (half_Life) {
                 isAlive = false;
 
                 cynoAnim.CrossFade("Knock", 0.1f);
@@ -354,29 +367,13 @@ public class CynoController : MonoBehaviour {
 
                 PlayerManager.gameOver = true;
 
-            } else if (other.tag == "media_vida") {
-                other.enabled = false;
-
-                if (half_Life) {
-                    isAlive = false;
-
-                    cynoAnim.CrossFade("Knock", 0.1f);
-                    FindFirstObjectByType<AudioManager>().stopSound("Running");
-                    FindFirstObjectByType<AudioManager>().playSound("hit");
-
-                    PlayerManager.gameOver = true;
-
-                } else {
-                    half_Life = true;
-                    FindFirstObjectByType<AudioManager>().stopSound("Running");
-                    FindFirstObjectByType<AudioManager>().playSound("hit");
-                }
-
+            } else {
+                half_Life = true;
+                FindFirstObjectByType<AudioManager>().stopSound("Running");
+                FindFirstObjectByType<AudioManager>().playSound("hit");
             }
 
-        } else {
-
-            if (other.tag == "jump") {
+        } else if (other.tag == "jump") {
                 isJumping = true;
 
                 if (isDashing) {
@@ -392,7 +389,7 @@ public class CynoController : MonoBehaviour {
                 FindFirstObjectByType<AudioManager>().playSound("Jump");
                 cynoAnim.CrossFade("Jumping Up", 0.2f);
 
-            } else if (other.tag == "dash") {
+        } else if (other.tag == "dash") {
                 isDashing = true;
                 characterController.height = heightDashing;
                 characterController.center = centerColliderDash;
@@ -402,9 +399,13 @@ public class CynoController : MonoBehaviour {
                 cynoAnim.CrossFade("Running Slide", 0.2f);
 
                 StartCoroutine(canDashRoutine());
-            }
-        }
 
+        } else if (other.tag == "move") {
+
+                Vector3 spawn = other.gameObject.transform.Find("spawnGod").transform.position;
+                characterController.Move(spawn-this.transform.position);     
+        }
+        
         if (other.tag == "rest_life") {
             half_Life = false;
         }
@@ -449,7 +450,8 @@ public class CynoController : MonoBehaviour {
         if (other.tag == "changeDirection") {
             canChangeDirection = false;
             firstChangeDir = true;
-        }
+
+        } 
     }
 
     public bool get_half_life() { return half_Life; }

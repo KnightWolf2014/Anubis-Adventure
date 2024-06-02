@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     {
         menu = false;
         gameOver = false;
+        godmode = false;
 
         numberOfCoins = 0;
         numberOfMeters = 0;

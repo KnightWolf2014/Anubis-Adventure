@@ -55,6 +55,37 @@ CapsuleCollider:
   m_Height: 29.497017
   m_Direction: 1
   m_Center: {x: 0.1933937, y: 7.19244, z: -8.5732765}
+--- !u!1 &5258771730098111174
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5056043563293490777}
+  m_Layer: 0
+  m_Name: spawnGod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5056043563293490777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258771730098111174}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.56, y: -6.3, z: -3.57}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1232674483278809789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8256246951126789081
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,6 +205,60 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.0575647, y: 5.1349144, z: 8.438889}
   m_Center: {x: -4.649305, y: 1.0386748, z: 1.8992908}
+--- !u!1 &9104452749825029231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1232674483278809789}
+  - component: {fileID: 2710990826581901115}
+  m_Layer: 0
+  m_Name: godmode
+  m_TagString: move
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1232674483278809789
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104452749825029231}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4, y: 8, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5056043563293490777}
+  m_Father: {fileID: 8498383487677489279}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2710990826581901115
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9104452749825029231}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.37274, y: 6.809408, z: 1.5319571}
+  m_Center: {x: -4.5114336, y: -2.904704, z: -1.5125158}
 --- !u!1001 &933648429650315567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -541,21 +626,24 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 4775035545437774371}
+      addedObject: {fileID: 1232674483278809789}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 4648261282010078617}
+      addedObject: {fileID: 4775035545437774371}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 573690511299230448}
+      addedObject: {fileID: 4648261282010078617}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 5701170253140606439}
+      addedObject: {fileID: 573690511299230448}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 4
-      addedObject: {fileID: 3303920534541202078}
+      addedObject: {fileID: 5701170253140606439}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 5
+      addedObject: {fileID: 3303920534541202078}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
+      insertIndex: 6
       addedObject: {fileID: 3725758302491622173}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: -1

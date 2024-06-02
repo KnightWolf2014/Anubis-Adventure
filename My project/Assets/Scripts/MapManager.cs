@@ -35,6 +35,7 @@ public class MapManager : MonoBehaviour
 
         stopSpawn = false;
 
+
         initSpawn();
         StartCoroutine(initDestroyPyramid());
 
