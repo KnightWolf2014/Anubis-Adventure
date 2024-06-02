@@ -1,12 +1,6 @@
-using System;
+
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-
-
 
 public class CynoController : MonoBehaviour {
 
@@ -67,7 +61,7 @@ public class CynoController : MonoBehaviour {
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
 
         characterController = GetComponent<CharacterController>();
         cynoAnim = GetComponent<Animator>();
@@ -373,7 +367,7 @@ public class CynoController : MonoBehaviour {
                 FindFirstObjectByType<AudioManager>().playSound("hit");
             }
 
-        } else if (other.tag == "jump") {
+        } else if (other.tag == "jump" && PlayerManager.godmode) {
                 isJumping = true;
 
                 if (isDashing) {
@@ -389,7 +383,7 @@ public class CynoController : MonoBehaviour {
                 FindFirstObjectByType<AudioManager>().playSound("Jump");
                 cynoAnim.CrossFade("Jumping Up", 0.2f);
 
-        } else if (other.tag == "dash") {
+        } else if (other.tag == "dash" && PlayerManager.godmode) {
                 isDashing = true;
                 characterController.height = heightDashing;
                 characterController.center = centerColliderDash;
@@ -400,7 +394,7 @@ public class CynoController : MonoBehaviour {
 
                 StartCoroutine(canDashRoutine());
 
-        } else if (other.tag == "move") {
+        } else if (other.tag == "move" && PlayerManager.godmode) {
 
                 Vector3 spawn = other.gameObject.transform.Find("spawnGod").transform.position;
                 characterController.Move(spawn-this.transform.position);     

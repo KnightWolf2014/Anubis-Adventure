@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +27,7 @@ public class PlayerManager : MonoBehaviour
     public static bool godmode; 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         menu = false;
         gameOver = false;
@@ -67,12 +66,13 @@ public class PlayerManager : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.G)) godmode = !godmode;
+        if (Input.GetKeyDown(KeyCode.G)) {
+            if (!godmode) godmode = true;
+            else godmode = false;    
+        }
 
         if (godmode) godModeText.enabled = true;
         else godModeText.enabled = false;   
-
-        //TODO IF GODMODE MOSTRAR TEXT PER PANTALLA
 
     }
     IEnumerator GameOver() {
