@@ -191,13 +191,13 @@ public class CynoController : MonoBehaviour {
     private void handleRunDirection() {
         moveDirection.forward = runSpeedForward;
 
-        if (Input.GetKey(KeyCode.LeftArrow)) {
+        if (Input.GetKey(KeyCode.LeftArrow) && !canChangeDirection) {
             if (!isJumping && !isDashing)
                 moveDirection.lateral = -runSpeedLateral;
             else
                 moveDirection.lateral = -runSpeedLateral * 0.85f;
 
-        } else if (Input.GetKey(KeyCode.RightArrow)) {
+        } else if (Input.GetKey(KeyCode.RightArrow) && !canChangeDirection) {
             if (!isJumping && !isDashing)
                 moveDirection.lateral = runSpeedLateral;
             else
@@ -207,13 +207,13 @@ public class CynoController : MonoBehaviour {
             moveDirection.lateral = 0;
         }
 
-        if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.A)) {
+        if (canChangeDirection && firstChangeDir && Input.GetKey(KeyCode.A)) {
             this.transform.eulerAngles -= new Vector3(0, 90.0f, 0);
             firstChangeDir = false;
             Vector3 spawn = changeDirectionGO.transform.Find("leftSpawn").transform.position;
             mapManager.changeDirection(spawn);
 
-        } else if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.D)) {
+        } else if (canChangeDirection && firstChangeDir && Input.GetKey(KeyCode.D)) {
             this.transform.eulerAngles += new Vector3(0, +90.0f, 0);
             firstChangeDir = false;
             Vector3 spawn = changeDirectionGO.transform.Find("rightSpawn").transform.position;
