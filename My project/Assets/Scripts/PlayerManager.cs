@@ -7,19 +7,20 @@ public class PlayerManager : MonoBehaviour
 {
 
     public static bool menu;
-    public GameObject menuPanel;
-    public GameObject menuPanelGameOvew;
+    [SerializeField] private GameObject menuPanel;
+    [SerializeField] private  GameObject menuPanelGameOvew;
 
     public static int numberOfCoins;
     public static int numberOfMeters;
     public static int numberOfPoints;
-    public Text coinsText;
-    public Text metersText;
-    public Text pointsText;
 
-    public Text coinsTextGO;
-    public Text metersTextGO;
-    public Text pointsTextGO;
+    [SerializeField] private Text coinsText;
+    [SerializeField] private Text metersText;
+    [SerializeField] private Text pointsText;
+
+    [SerializeField] private Text coinsTextGO;
+    [SerializeField] private Text metersTextGO;
+    [SerializeField] private Text pointsTextGO;
 
     public static bool gameOver;
 

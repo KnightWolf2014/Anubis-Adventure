@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &27424813477627094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6991175075427745491}
+  - component: {fileID: 4535356169612335700}
+  m_Layer: 0
+  m_Name: rest_life
+  m_TagString: rest_life
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6991175075427745491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27424813477627094}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0013494492, y: 6.015089, z: -3.1946044}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4168481258771031718}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4535356169612335700
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27424813477627094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11.057909
+  m_Height: 24.134026
+  m_Direction: 1
+  m_Center: {x: -0.7025852, y: 2.1286774, z: 17.535856}
 --- !u!1 &6892924297466819379
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,18 +293,21 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 4111880833459371128}
+      addedObject: {fileID: 6991175075427745491}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 5953128324101733453}
+      addedObject: {fileID: 4111880833459371128}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 8333563931925866205}
+      addedObject: {fileID: 5953128324101733453}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 3
-      addedObject: {fileID: 4731998217397678533}
+      addedObject: {fileID: 8333563931925866205}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: 4
+      addedObject: {fileID: 4731998217397678533}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
+      insertIndex: 5
       addedObject: {fileID: 1924559258595326006}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af809e2883fb8cf41801d38f2b10c8b4, type: 3}
       insertIndex: -1

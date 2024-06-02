@@ -12,8 +12,8 @@ public class MapManager : MonoBehaviour
     private float mapLenght = 25;
     private int initScreenMaps = 5;
 
-    public int size;
-    public int mapNum;
+    private int size;
+    private int mapNum;
 
     private Vector3 startPosMap;
 
@@ -24,6 +24,7 @@ public class MapManager : MonoBehaviour
     private bool stopSpawn;
 
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject pyramid;
 
     // Start is called before the first frame update
     void Start() {
@@ -35,6 +36,7 @@ public class MapManager : MonoBehaviour
         stopSpawn = false;
 
         initSpawn();
+        StartCoroutine(initDestroyPyramid());
 
     }
 
@@ -143,5 +145,12 @@ public class MapManager : MonoBehaviour
                 spawnMap(0, newPart);
             }
         }
+    }
+
+
+    IEnumerator initDestroyPyramid() {
+        yield return new WaitForSecondsRealtime(4.0f);
+        Destroy(pyramid);
+
     }
 }

@@ -53,6 +53,7 @@ public class CynoController : MonoBehaviour {
     float heightDashing;
 
     bool isAlive;
+    bool half_Life;
 
     //Variables para cambiar de direccion
     [SerializeField] private MapManager mapManager;
@@ -94,6 +95,10 @@ public class CynoController : MonoBehaviour {
         firstChangeDir = true;
 
         changeDirectionGO = null;
+
+        half_Life = true;
+
+        StartCoroutine(initEnemyFollow());
     }
 
 
@@ -208,7 +213,7 @@ public class CynoController : MonoBehaviour {
             Vector3 spawn = changeDirectionGO.transform.Find("leftSpawn").transform.position;
             mapManager.changeDirection(spawn);
 
-        } else if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.S)) {
+        } else if (canChangeDirection && firstChangeDir && Input.GetKeyDown(KeyCode.D)) {
             this.transform.eulerAngles += new Vector3(0, +90.0f, 0);
             firstChangeDir = false;
             Vector3 spawn = changeDirectionGO.transform.Find("rightSpawn").transform.position;
@@ -320,6 +325,13 @@ public class CynoController : MonoBehaviour {
 
     }
 
+    IEnumerator initEnemyFollow() {
+        yield return new WaitForSecondsRealtime(4.0f);
+        half_Life = false;
+
+    }
+
+
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "full_vida") {
 
@@ -334,9 +346,27 @@ public class CynoController : MonoBehaviour {
 
         } else if (other.tag == "media_vida") {
             other.enabled = false;
-            Debug.Log("Half");
 
-        } 
+            if (half_Life) {
+                isAlive = false;
+
+                cynoAnim.CrossFade("Knock", 0.1f);
+                FindFirstObjectByType<AudioManager>().stopSound("Running");
+                FindFirstObjectByType<AudioManager>().playSound("hit");
+
+                PlayerManager.gameOver = true;
+
+            } else {
+                half_Life = true;
+                FindFirstObjectByType<AudioManager>().stopSound("Running");
+                FindFirstObjectByType<AudioManager>().playSound("hit");
+            }
+
+        }
+
+        if (other.tag == "rest_life") {
+            half_Life = false;
+        }
     }
 
     private void OnTriggerStay(Collider other) {
@@ -344,7 +374,6 @@ public class CynoController : MonoBehaviour {
         if (!canChangeDirection && other.tag == "changeDirection") {
             canChangeDirection = true;
             changeDirectionGO = other.gameObject;
-            Debug.Log(changeDirectionGO.name);
         }
     }
 
@@ -354,5 +383,7 @@ public class CynoController : MonoBehaviour {
             firstChangeDir = true;
         }
     }
+
+    public bool get_half_life() { return half_Life; }
 
 }
